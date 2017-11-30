@@ -40,7 +40,7 @@ namespace Microsoft.Bot.Sample.LuisBot
                 intent += t.Score;
                 intent += ",";
             }
-            await context.PostAsync($"-You have reached the none intent. You said: {result.Query} Intents: {intent}"); //
+            await context.PostAsync($"-You have reached the none intent(test continuous deployment 1). You said: {result.Query} Intents: {intent}"); //
             context.Wait(MessageReceived);
         }
         
