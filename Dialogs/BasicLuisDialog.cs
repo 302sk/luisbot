@@ -13,10 +13,10 @@ namespace Microsoft.Bot.Sample.LuisBot
     [Serializable]
     public class BasicLuisDialog : LuisDialog<object>
     {
-        public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(ConfigurationManager.AppSettings["LuisAppId"], ConfigurationManager.AppSettings["LuisAPIKey"])))
+        public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute(ConfigurationManager.AppSettings["LuisAppId2"], ConfigurationManager.AppSettings["LuisAPIKey2"])))
         //public BasicLuisDialog() : base(new LuisService(new LuisModelAttribute("94acc471-3420-4467-84bd-ac5d054c0f80", "904f0966f6204a4b8f1b8bdf88b9886d")))
         {
-            Trace.TraceError("appid:{0}, appkey: {1}", ConfigurationManager.AppSettings["LuisAppId"], ConfigurationManager.AppSettings["LuisAPIKey"]);
+            Trace.TraceError("appid:{0}, appkey: {1}", ConfigurationManager.AppSettings["LuisAppId2"], ConfigurationManager.AppSettings["LuisAPIKey2"]);
         }
 
         [LuisIntent("控制家用电器")]
