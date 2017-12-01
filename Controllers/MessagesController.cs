@@ -24,7 +24,7 @@ namespace Microsoft.Bot.Sample.LuisBot
         [ResponseType(typeof(void))]
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
         {
-            Trace.TraceError("appid:{0}, appkey: {1}", ConfigurationManager.AppSettings["LuisAppId"], ConfigurationManager.AppSettings["LuisAPIKey"]);
+            Trace.TraceError("appid:{0}, appkey: {1}", ConfigurationManager.AppSettings["LuisAppId2"], ConfigurationManager.AppSettings["LuisAPIKey2"]);
             // check if activity is of type message
             //throw(new Exception("api message has been called"));
             System.Console.WriteLine("Message : {0}", activity.GetActivityType().ToString());
