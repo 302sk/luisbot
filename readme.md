@@ -29,5 +29,5 @@ For first time publish after downloading source code
 
 If you have setup continuous integration, then your bot will automatically deployed when new changes are pushed to the source repository.
 
-
+#for deploying
 
