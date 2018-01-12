@@ -8,6 +8,7 @@ using System.Web.Http.Description;
 using System.Net.Http;
 using System.Diagnostics;
 using System.Configuration;
+using Microsoft.Bot.Sample.QnADialogs;
 
 
 namespace Microsoft.Bot.Sample.LuisBot
@@ -32,7 +33,8 @@ namespace Microsoft.Bot.Sample.LuisBot
             {
                 if (activity.GetActivityType() == ActivityTypes.Message)
                 {
-                    await Conversation.SendAsync(activity, () => new BasicLuisDialog());
+                    //await Conversation.SendAsync(activity, () => new BasicLuisDialog());
+                    await Conversation.SendAsync(activity, () => new QnaDialog());
                 }
                 else
                 {
