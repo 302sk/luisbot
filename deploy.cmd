@@ -20,7 +20,7 @@ IF %ERRORLEVEL% NEQ 0 (
 
 setlocal enabledelayedexpansion
 
-SET ARTIFACTS=%~dp0%\artifacts
+SET ARTIFACTS=%~dp0%artifacts
 ::SET KUDU_SYNC_CMD=%appdata%\npm\kuduSync.cmd
 SET DEPLOYMENT_SOURCE=%~dp0%.
 
