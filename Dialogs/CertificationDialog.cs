@@ -11,11 +11,11 @@
         private int attempts = 3;
         //是否第三方证明
         private bool isThirdParty = false;
-        private int step = 1;
+        private int step = 0;
 
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("1.第三方模板证明 2.开具公司模板证明");
+            //await context.PostAsync("1.第三方模板证明 2.开具公司模板证明");
 
             context.Wait(this.MessageReceivedAsync);
         }
@@ -23,7 +23,13 @@
         private async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var message = await result;
-            if(step == 1) //第一步，选择第三方或者公司模板
+            if(step == 0)
+            {
+                await context.PostAsync("请选择证明类型：1.第三方模板证明 2.开具公司模板证明");
+                step = 1;
+                context.Wait(this.MessageReceivedAsync);
+            }
+            else if(step == 1) //第一步，选择第三方或者公司模板
             {
                 if(message.Text == "1"){
                     await context.PostAsync("需要经理审批，然后发信给 HR，三个工作日后领取");
