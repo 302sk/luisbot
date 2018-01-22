@@ -19,7 +19,7 @@ namespace Microsoft.Bot.Sample.QADialogs
         /// </summary>
         public override async Task NoMatchHandler(IDialogContext context, string originalQueryText)
         {
-            await context.PostAsync($"Sorry, I couldn't find an answer for '{originalQueryText}'.");
+            await context.PostAsync($"Sorry, I couldn't find an answer for '{originalQueryText}'.\n对不起，没有找到以上问题的答案");
             //context.Wait(MessageReceived);
             context.Done(false);
         }
@@ -33,7 +33,7 @@ namespace Microsoft.Bot.Sample.QADialogs
             // and add any attachments to a new message activity with the message activity text set by default
             // to the answer property from the result
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"I found an answer that might help...{result.Answer}.";
+            messageActivity.Text = $"{result.Answer}.";
 
             await context.PostAsync(messageActivity);
 
@@ -48,7 +48,7 @@ namespace Microsoft.Bot.Sample.QADialogs
         public async Task LowScoreHandler(IDialogContext context, string originalQueryText, QnAMakerResult result)
         {
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"I found an answer that might help...{result.Answer}.";
+            messageActivity.Text = $"{result.Answer}.";
             await context.PostAsync(messageActivity);
 
             //context.Wait(MessageReceived);

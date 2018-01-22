@@ -31,8 +31,9 @@
             //在这里判断用户输入是否包含关键字“证明”，如果包含，启动证明表单 Dialog
             if(message.Text.Contains("证明"))
             {
-                await context.PostAsync("您想开具什么证明？");
-                //context.Wait(this.MessageReceivedAsync);
+                //不现实该提示，避免微信中多条回复导致报错
+                //await context.PostAsync("您想开具什么证明？");
+
                 var certDialog = new CertificationDialog();
                 await context.Forward(certDialog, AfterCertificationDialog, message, System.Threading.CancellationToken.None);
             }
@@ -49,8 +50,8 @@
         private async Task AfterCertificationDialog(IDialogContext context, IAwaitable<string> result)
         {
             var answerFound = await result;
-
-            await context.PostAsync(answerFound);
+            //不现实流程完毕的提示，避免微信中多条回复导致报错
+            //await context.PostAsync(answerFound);
 
             context.Wait(this.MessageReceivedAsync);
         }
@@ -62,7 +63,7 @@
             // we might want to send a message or take some action if no answer was found (false returned)
             if (!answerFound)
             {
-                await context.PostAsync("I’m not sure what you want.");
+                //await context.PostAsync("I’m not sure what you want.");
             }
 
             context.Wait(this.MessageReceivedAsync);
