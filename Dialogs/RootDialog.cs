@@ -6,6 +6,7 @@
     using Microsoft.Bot.Connector;
     using Microsoft.Bot.Sample.QADialogs;
     using Microsoft.Bot.Sample.Dialogs;
+    using global::LuisBot.RPADemo;
 
 #pragma warning disable 1998
 
@@ -36,6 +37,16 @@
 
                 var certDialog = new CertificationDialog();
                 await context.Forward(certDialog, AfterCertificationDialog, message, System.Threading.CancellationToken.None);
+            }
+            else if (message.Text.Contains("rpademo"))
+            {
+                //magic word for triggering rpa demo
+                RPADemoExcelPortTypeClient testProcess = new RPADemoExcelPortTypeClient("RPADemoExcelSoap");
+                testProcess.ClientCredentials.UserName.UserName = "admin";
+                testProcess.ClientCredentials.UserName.Password = "Pass@word2";
+                testProcess.RPADemoExcel();
+                await context.PostAsync("RPA Demo has been triggered!");
+                context.Wait(this.MessageReceivedAsync);
             }
             else
             {

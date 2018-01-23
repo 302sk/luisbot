@@ -5,6 +5,8 @@ using System.Configuration;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using QnAMakerDialog;
+using System.IO;
+using LuisBot.Utils;
 //using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 
 namespace Microsoft.Bot.Sample.QADialogs
@@ -14,6 +16,12 @@ namespace Microsoft.Bot.Sample.QADialogs
     [QnAMakerService("da40658c25604d178dab6d13769ec56c", "878cfb2e-fa4c-4aa1-9ecd-d194470d16aa")]
     public class QnADialog : QnAMakerDialog<bool>
     {
+        private QnALogging qaLog;
+
+        public QnADialog():base()
+        {
+            qaLog = new QnALogging(@"~/qna_log.csv");
+        }
         /// <summary>
         /// Handler used when the QnAMaker finds no appropriate answer
         /// </summary>
@@ -21,6 +29,7 @@ namespace Microsoft.Bot.Sample.QADialogs
         {
             await context.PostAsync($"Sorry, I couldn't find an answer for '{originalQueryText}'.\n对不起，没有找到以上问题的答案");
             //context.Wait(MessageReceived);
+            qaLog.WriteLog(originalQueryText, "No answer found!");
             context.Done(false);
         }
 
@@ -33,8 +42,8 @@ namespace Microsoft.Bot.Sample.QADialogs
             // and add any attachments to a new message activity with the message activity text set by default
             // to the answer property from the result
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"{result.Answer}.";
-
+            messageActivity.Text = $"{result.Answer}";
+            qaLog.WriteLog(originalQueryText, result.Answer);
             await context.PostAsync(messageActivity);
 
             //context.Wait(MessageReceived);
@@ -48,7 +57,7 @@ namespace Microsoft.Bot.Sample.QADialogs
         public async Task LowScoreHandler(IDialogContext context, string originalQueryText, QnAMakerResult result)
         {
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"{result.Answer}.";
+            messageActivity.Text = $"{result.Answer}";
             await context.PostAsync(messageActivity);
 
             //context.Wait(MessageReceived);
