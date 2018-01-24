@@ -1,11 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <meta charset="utf-8" />
+    <link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+
 </head>
-<body style="font-family:'Segoe UI'">
-    <h1>Roche Chatbot POC</h1>
-    <iframe width="600px" height="400px" src='https://webchat.botframework.com/embed/juniorjarvis4?s=kt0O0i8273E.cwA.bq4.FgTohUQ8lOnLxhEpOF0URCIJNASyeDLdi5rB7Er2JUc'></iframe>
+<body>
+    <div id="bot" />
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        BotChat.App({
+            directLine: { secret: '0ZvJJoEZMTg.cwA.gxA.xN_4TgDjg5oKNzHM4RgKl1-MtHaww6CJlcJNIOz7idA' },
+            user: { id: 'Avanade' },
+            bot: { id: 'botid' },
+            resize: 'detect'
+        }, document.getElementById("bot"));
+        $(function () { s1 = $(".wc-header span"); s1.text("AskHR"); console.log("change title"); });
+    </script>
 </body>
 </html>

@@ -63,8 +63,10 @@
             var answerFound = await result;
             //不现实流程完毕的提示，避免微信中多条回复导致报错
             //await context.PostAsync(answerFound);
+            var fbDialog = new FeedbackDialog();
+            await context.Forward(fbDialog, AfterFeedbackDialog, new Activity(), System.Threading.CancellationToken.None);
 
-            context.Wait(this.MessageReceivedAsync);
+            //context.Wait(this.MessageReceivedAsync);
         }
 
         private async Task AfterQnADialog(IDialogContext context, IAwaitable<bool> result)
