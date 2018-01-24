@@ -72,61 +72,22 @@
             var answerFound = await result;
 
             // we might want to send a message or take some action if no answer was found (false returned)
-            if (!answerFound)
+            if (answerFound)
             {
                 //await context.PostAsync("I’m not sure what you want.");
+                var fbDialog = new FeedbackDialog();
+                await context.Forward(fbDialog, AfterFeedbackDialog,new Activity(), System.Threading.CancellationToken.None);
             }
+            else
+            {
+                context.Wait(this.MessageReceivedAsync);
+            }          
+        }
 
+        private async Task AfterFeedbackDialog(IDialogContext context, IAwaitable<string> result)
+        {
             context.Wait(this.MessageReceivedAsync);
         }
 
-        //private async Task SendWelcomeMessageAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
-        //{
-        //    await context.PostAsync("Hi, I'm the Basic Multi Dialog bot. Let's get started.");
-
-        //    context.Wait(this.MessageReceivedAsync);
-        //}
-
-        //private async Task SendWelcomeMessageAsync(IDialogContext context)
-        //{
-        //    await context.PostAsync("Hi, I'm the Basic Multi Dialog bot. Let's get started.");
-
-        //    context.Call(new NameDialog(), this.NameDialogResumeAfter);
-        //}
-
-        //private async Task NameDialogResumeAfter(IDialogContext context, IAwaitable<string> result)
-        //{
-        //    try
-        //    {
-        //        this.name = await result;
-
-        //        context.Call(new AgeDialog(this.name), this.AgeDialogResumeAfter);
-        //    }
-        //    catch (TooManyAttemptsException)
-        //    {
-        //        await context.PostAsync("I'm sorry, I'm having issues understanding you. Let's try again.");
-
-        //        await this.SendWelcomeMessageAsync(context);
-        //    }
-        //}
-
-        //private async Task AgeDialogResumeAfter(IDialogContext context, IAwaitable<int> result)
-        //{
-        //    try
-        //    {
-        //        this.age = await result;
-
-        //        await context.PostAsync($"Your name is { name } and your age is { age }.");
-
-        //    }
-        //    catch (TooManyAttemptsException)
-        //    {
-        //        await context.PostAsync("I'm sorry, I'm having issues understanding you. Let's try again.");
-        //    }
-        //    finally
-        //    {
-        //        await this.SendWelcomeMessageAsync(context);
-        //    }
-        //}
     }
 }

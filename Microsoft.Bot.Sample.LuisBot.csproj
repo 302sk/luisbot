@@ -150,6 +150,7 @@
     </Compile>
     <Compile Include="Dialogs\BasicLuisDialog.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Dialogs\FeedbackDialog.cs" />
     <Compile Include="Dialogs\QnAMakerDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
