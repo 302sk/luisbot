@@ -12,50 +12,50 @@ namespace LuisBot.RPADemo {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:blueprism:webservice:rpademoexcel", ConfigurationName="RPADemo.RPADemoExcelPortType")]
-    public interface RPADemoExcelPortType {
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:blueprism:webservice:rpademocsv", ConfigurationName="RPADemo.RPADemoCSVPortType")]
+    public interface RPADemoCSVPortType {
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(Style=System.ServiceModel.OperationFormatStyle.Rpc, SupportFaults=true, Use=System.ServiceModel.OperationFormatUse.Encoded)]
-        void RPADemoExcel();
+        void RPADemoCSV();
         
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
-        System.Threading.Tasks.Task RPADemoExcelAsync();
+        System.Threading.Tasks.Task RPADemoCSVAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface RPADemoExcelPortTypeChannel : LuisBot.RPADemo.RPADemoExcelPortType, System.ServiceModel.IClientChannel {
+    public interface RPADemoCSVPortTypeChannel : LuisBot.RPADemo.RPADemoCSVPortType, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class RPADemoExcelPortTypeClient : System.ServiceModel.ClientBase<LuisBot.RPADemo.RPADemoExcelPortType>, LuisBot.RPADemo.RPADemoExcelPortType {
+    public partial class RPADemoCSVPortTypeClient : System.ServiceModel.ClientBase<LuisBot.RPADemo.RPADemoCSVPortType>, LuisBot.RPADemo.RPADemoCSVPortType {
         
-        public RPADemoExcelPortTypeClient() {
+        public RPADemoCSVPortTypeClient() {
         }
         
-        public RPADemoExcelPortTypeClient(string endpointConfigurationName) : 
+        public RPADemoCSVPortTypeClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public RPADemoExcelPortTypeClient(string endpointConfigurationName, string remoteAddress) : 
+        public RPADemoCSVPortTypeClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public RPADemoExcelPortTypeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public RPADemoCSVPortTypeClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public RPADemoExcelPortTypeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public RPADemoCSVPortTypeClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public void RPADemoExcel() {
-            base.Channel.RPADemoExcel();
+        public void RPADemoCSV() {
+            base.Channel.RPADemoCSV();
         }
         
-        public System.Threading.Tasks.Task RPADemoExcelAsync() {
-            return base.Channel.RPADemoExcelAsync();
+        public System.Threading.Tasks.Task RPADemoCSVAsync() {
+            return base.Channel.RPADemoCSVAsync();
         }
     }
 }

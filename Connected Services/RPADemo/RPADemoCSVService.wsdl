@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:blueprism:webservice:rpademocsv" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="RPADemoCSVService" targetNamespace="urn:blueprism:webservice:rpademocsv" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="urn:blueprism:webservice:rpademocsv" />
+  </wsdl:types>
+  <wsdl:message name="RPADemoCSVRequest" />
+  <wsdl:message name="RPADemoCSVResponse" />
+  <wsdl:portType name="RPADemoCSVPortType">
+    <wsdl:operation name="RPADemoCSV">
+      <wsdl:input message="tns:RPADemoCSVRequest" />
+      <wsdl:output message="tns:RPADemoCSVResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RPADemoCSVSoapBinding" type="tns:RPADemoCSVPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RPADemoCSV">
+      <soap:operation soapAction="" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:blueprism:webservice:rpademocsv" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:blueprism:webservice:rpademocsv" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RPADemoCSVService">
+    <wsdl:port name="RPADemoCSVSoap" binding="tns:RPADemoCSVSoapBinding">
+      <soap:address location="http://RPADEMO02:8181/ws/RPADemoCSV" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

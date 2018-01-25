@@ -41,10 +41,10 @@
             else if (message.Text.Contains("rpademo"))
             {
                 //magic word for triggering rpa demo
-                RPADemoExcelPortTypeClient testProcess = new RPADemoExcelPortTypeClient("RPADemoExcelSoap");
+                RPADemoCSVPortTypeClient testProcess = new RPADemoCSVPortTypeClient("RPADemoCSVSoap");
                 testProcess.ClientCredentials.UserName.UserName = "admin";
                 testProcess.ClientCredentials.UserName.Password = "Pass@word2";
-                testProcess.RPADemoExcel();
+                testProcess.RPADemoCSV();
                 await context.PostAsync("RPA Demo has been triggered!");
                 context.Wait(this.MessageReceivedAsync);
             }

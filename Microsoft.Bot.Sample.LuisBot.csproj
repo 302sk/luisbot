@@ -167,7 +167,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Connected Services\RPADemo\RPADemoExcelService.wsdl" />
+    <None Include="Connected Services\RPADemo\RPADemoCSVService.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
