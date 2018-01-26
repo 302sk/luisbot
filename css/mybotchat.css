@@ -1,6 +1,16 @@
+.wc-console {
+	border: none;
+	background: white;
+}
 .wc-console .wc-textbox input {
-	color: white;
+	color: #333;
 }
 .wc-console svg {
-	fill: white;
+	fill: #0078d7;
+}
+.wc-console label, .wc-console button {
+	height: 50px;
+}
+.wc-console svg {
+    margin: 16px 11px;
 }

@@ -172,6 +172,7 @@ h2 {
 }
 .out-grid .options .topic {
     position: relative;
+    min-height: 17vh;
 }
 
 .out-grid .options .topic .link {
