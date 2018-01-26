@@ -135,8 +135,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="botchat.htm" />
+    <Content Include="css\default.css" />
+    <Content Include="css\mybotchat.css" />
     <Content Include="default.htm" />
+    <Content Include="default.html" />
     <Content Include="Global.asax" />
+    <Content Include="img\avanade-logo.svg" />
+    <Content Include="img\background.png" />
+    <Content Include="img\icon_benefits.png" />
+    <Content Include="img\icon_payroll.png" />
+    <Content Include="img\icon_scheduling.png" />
+    <Content Include="img\icon_training.png" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -166,7 +176,9 @@
     <Compile Include="Utils\QnALogging.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Connected Services\RPADemo\RPADemoCSVService.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -188,6 +200,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\RPADemo\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

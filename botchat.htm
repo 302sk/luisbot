@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.botframework.com/botframework-webchat/latest/botchat.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/mybotchat.css">
+</head>
+<body>
+    <div id="bot" />
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/botchat.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        BotChat.App({
+            directLine: { secret: '0ZvJJoEZMTg.cwA.gxA.xN_4TgDjg5oKNzHM4RgKl1-MtHaww6CJlcJNIOz7idA' },
+            user: { id: 'Avanade' },
+            bot: { id: 'botid' },
+            resize: 'detect'
+        }, document.getElementById("bot"));
+        $(function () { s1 = $(".wc-header span"); s1.text("AskHR"); console.log("change title"); });
+    </script>
+</body>
+</html>
