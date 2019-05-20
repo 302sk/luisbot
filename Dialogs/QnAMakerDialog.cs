@@ -11,9 +11,11 @@ using LuisBot.Utils;
 
 namespace Microsoft.Bot.Sample.QADialogs
 {
+
     [Serializable]
     //[QnAMakerService(ConfigurationManager.AppSettings["QnaSubscriptionKey"], ConfigurationManager.AppSettings["QnaKnowledgebaseId"])]
-    [QnAMakerService("da40658c25604d178dab6d13769ec56c", "878cfb2e-fa4c-4aa1-9ecd-d194470d16aa")]
+    //[QnAMakerService("da40658c25604d178dab6d13769ec56c", "878cfb2e-fa4c-4aa1-9ecd-d194470d16aa")]
+    [QnAMakerService("cdeecfbe85ce4386bf3fae769426603f", "e9faf483-59fd-468e-b641-10cde370a84f")]
     public class QnADialog : QnAMakerDialog<bool>
     {
         private QnALogging qaLog;
