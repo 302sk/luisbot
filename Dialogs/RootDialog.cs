@@ -61,7 +61,7 @@
         private async Task AfterCertificationDialog(IDialogContext context, IAwaitable<string> result)
         {
             var answerFound = await result;
-            //不现实流程完毕的提示，避免微信中多条回复导致报错
+            //不显示流程完毕的提示，避免微信中多条回复导致报错
             //await context.PostAsync(answerFound);
             var fbDialog = new FeedbackDialog();
             await context.Forward(fbDialog, AfterFeedbackDialog, new Activity(), System.Threading.CancellationToken.None);
@@ -74,16 +74,16 @@
             var answerFound = await result;
 
             // we might want to send a message or take some action if no answer was found (false returned)
-            if (answerFound)
-            {
-                //await context.PostAsync("I’m not sure what you want.");
-                var fbDialog = new FeedbackDialog();
-                await context.Forward(fbDialog, AfterFeedbackDialog,new Activity(), System.Threading.CancellationToken.None);
-            }
-            else
-            {
+            //if (answerFound)
+            //{
+            //    //await context.PostAsync("I’m not sure what you want.");
+            //    var fbDialog = new FeedbackDialog();
+            //    await context.Forward(fbDialog, AfterFeedbackDialog,new Activity(), System.Threading.CancellationToken.None);
+            //}
+            //else
+            //{
                 context.Wait(this.MessageReceivedAsync);
-            }          
+            //}          
         }
 
         private async Task AfterFeedbackDialog(IDialogContext context, IAwaitable<string> result)

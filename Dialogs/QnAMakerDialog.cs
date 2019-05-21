@@ -7,6 +7,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using QnAMakerDialog;
 using System.IO;
 using LuisBot.Utils;
+using QnAMakerDialog.Models;
 //using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 
 namespace Microsoft.Bot.Sample.QADialogs
@@ -15,7 +16,7 @@ namespace Microsoft.Bot.Sample.QADialogs
     [Serializable]
     //[QnAMakerService(ConfigurationManager.AppSettings["QnaSubscriptionKey"], ConfigurationManager.AppSettings["QnaKnowledgebaseId"])]
     //[QnAMakerService("da40658c25604d178dab6d13769ec56c", "878cfb2e-fa4c-4aa1-9ecd-d194470d16aa")]
-    [QnAMakerService("cdeecfbe85ce4386bf3fae769426603f", "e9faf483-59fd-468e-b641-10cde370a84f")]
+    [QnAMakerService("https://jjarvis5-qna.azurewebsites.net/qnamaker", "89e79788-00ac-4d9b-959d-5839f57f47f0", "e9faf483-59fd-468e-b641-10cde370a84f")]
     public class QnADialog : QnAMakerDialog<bool>
     {
         private QnALogging qaLog;
@@ -44,8 +45,9 @@ namespace Microsoft.Bot.Sample.QADialogs
             // and add any attachments to a new message activity with the message activity text set by default
             // to the answer property from the result
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"{result.Answer}";
-            qaLog.WriteLog(originalQueryText, result.Answer);
+            //messageActivity.Text = $"{result.Answers.SingleOrDefault().Answer}";
+            messageActivity.Text = $"{result.Answers[0].Answer}";
+            //qaLog.WriteLog(originalQueryText, result.Answers[0].Answer);
             await context.PostAsync(messageActivity);
 
             //context.Wait(MessageReceived);
@@ -55,11 +57,11 @@ namespace Microsoft.Bot.Sample.QADialogs
         /// <summary>
         /// Handler to respond when QnAMakerResult score is a maximum of 50
         /// </summary>
-        [QnAMakerResponseHandler(50)]
+        [QnAMakerResponseHandler(0.1)]
         public async Task LowScoreHandler(IDialogContext context, string originalQueryText, QnAMakerResult result)
         {
             var messageActivity = ProcessResultAndCreateMessageActivity(context, ref result);
-            messageActivity.Text = $"{result.Answer}";
+            messageActivity.Text = $"{result.Answers.SingleOrDefault().Answer}";
             await context.PostAsync(messageActivity);
 
             //context.Wait(MessageReceived);
